@@ -1,8 +1,20 @@
 var express = require('express'),
-    path = require('path');
+    fs = require('fs'),
+    Sequelize = require('sequelize');
 
 var conf = require('./config/conf');
 var app = express();
+
+var sequelize = new Sequelize(conf.db);
+var modelsPath = __dirname + '/app/models';
+fs.readdirSync(modelsPath).forEach(function (file) {
+  if (file.indexOf('.js') >= 0) {
+    var model = require(modelsPath + '/' + file)(sequelize);
+    if (app.get('env') === 'development') {
+        model.sync();
+    };
+  }
+});
 
 app.set('view engine', 'ejs');
 app.set('views', conf.root + '/app/views');

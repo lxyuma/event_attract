@@ -13,7 +13,7 @@ module.exports = function(app, conf) {
     app.use(cookieParser());
     app.use(require('node-compass')({mode: 'expanded'}));
     app.use(express.static(path.join(__dirname, 'public')));
-    app.use(express.compress());
+    //app.use(express.compress());
     //app.use(express.favicon(config.root + '/app/public/img/favicon.ico'));
 
 };
