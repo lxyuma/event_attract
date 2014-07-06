@@ -1,5 +1,6 @@
 var express = require('express'),
     fs = require('fs'),
+    path = require('path'),
     Sequelize = require('sequelize');
 
 var conf = require('./config/conf');
@@ -18,6 +19,7 @@ fs.readdirSync(modelsPath).forEach(function (file) {
 
 app.set('view engine', 'ejs');
 app.set('views', conf.root + '/server/views');
+app.use(express.static(path.join(__dirname, 'public')));
 
 require('./config/routes')(app);
 require('./config/err')(app);
