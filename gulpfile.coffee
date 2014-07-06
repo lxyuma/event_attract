@@ -8,14 +8,14 @@ dist =
 src =
   jsPath: "./client/**/*.js"
 
-bower =
-  ractive: "./bower_components/ractive/ractive.js"
-
 gulp.task 'scripts', ->
-  gulp.src([bower.ractive, src.jsPath])
+  gulp.src([src.jsPath])
     .pipe(pl.concat(dist.jsFile))
     .pipe(gulp.dest(dist.jsDir))
     .pipe(pl.connect.reload())
+
+gulp.task 'bower', ->
+  pl.bowerFiles().pipe(gulp.dest(dist.jsDir))
 
 gulp.task 'connect', ['scripts'], ->
   pl.connect.server(
@@ -23,7 +23,7 @@ gulp.task 'connect', ['scripts'], ->
     livereload: true
   )
 
-gulp.task 'build', ['scripts']
+gulp.task 'build', ['scripts', 'bower']
 
 gulp.task 'watch', ['build'], ->
   gulp.watch(src.jsPath, ['scripts'])
