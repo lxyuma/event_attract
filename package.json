@@ -6,14 +6,15 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "express": "~4.2.0",
-    "static-favicon": "~1.0.0",
-    "morgan": "~1.0.0",
-    "cookie-parser": "~1.0.1",
     "body-parser": "~1.0.0",
+    "cookie-parser": "~1.0.1",
     "debug": "~0.7.4",
     "ejs": "~0.8.5",
-    "node-compass": "0.2.3"
+    "express": "~4.2.0",
+    "express-session": "^1.6.3",
+    "morgan": "~1.0.0",
+    "node-compass": "0.2.3",
+    "static-favicon": "~1.0.0"
   },
   "devDependencies": {
     "coffee-script": "^1.7.1",
