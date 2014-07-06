@@ -6,7 +6,7 @@ var conf = require('./config/conf');
 var app = express();
 
 var sequelize = new Sequelize(conf.db);
-var modelsPath = __dirname + '/app/models';
+var modelsPath = __dirname + '/server/models';
 fs.readdirSync(modelsPath).forEach(function (file) {
   if (file.indexOf('.js') >= 0) {
     var model = require(modelsPath + '/' + file)(sequelize);
@@ -17,7 +17,7 @@ fs.readdirSync(modelsPath).forEach(function (file) {
 });
 
 app.set('view engine', 'ejs');
-app.set('views', conf.root + '/app/views');
+app.set('views', conf.root + '/server/views');
 
 require('./config/routes')(app);
 require('./config/err')(app);
