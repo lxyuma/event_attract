@@ -28,3 +28,4 @@ gulp.task 'build', ['scripts', 'bower']
 gulp.task 'watch', ['build'], ->
   gulp.watch(src.jsPath, ['scripts'])
 
+# test
